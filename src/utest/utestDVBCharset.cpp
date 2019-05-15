@@ -2,6 +2,7 @@
 //
 // TSDuck - The MPEG Transport Stream Toolkit
 // Copyright (c) 2005-2021, Thierry Lelegard
+// Copyright (c) 2019 Masayuki Nagamachi <masayuki.nagamachi@gmail.com>
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -79,7 +80,12 @@ void DVBCharsetTest::afterTest()
 void DVBCharsetTest::testRepository()
 {
     debug() << "DVBCharsetTest::testRepository: charsets: " << ts::UString::Join(ts::Charset::GetAllNames()) << std::endl;
+#if defined(TS_ARIB)
+    TSUNIT_EQUAL(39, ts::Charset::GetAllNames().size());
+#else
     TSUNIT_EQUAL(38, ts::Charset::GetAllNames().size());
+#endif    
+    
 
     // ARIB, ARIB-STD-B24,
     // DVB, ISO-6937, UNICODE, UTF-8,
