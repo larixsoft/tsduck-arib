@@ -225,7 +225,9 @@
 #include "tsDVBAC3Descriptor.h"
 #include "tsDVBAC4Descriptor.h"
 #include "tsDVBCharset.h"
+#if defined(TS_ARIB)
 #include "tsDVBCharsetARIB.h"
+#endif
 #include "tsDVBCharTable.h"
 #include "tsDVBCharTableSingleByte.h"
 #include "tsDVBCharTableUTF16.h"
