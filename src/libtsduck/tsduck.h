@@ -88,6 +88,7 @@
 #include "tsARIBCharset.h"
 #include "tsARIBAudioComponentDescriptor.h"
 #include "tsARIBSeriesDescriptor.h"
+#include "tsARIBTSInformationDescriptor.h"
 #include "tsAssociationTagDescriptor.h"
 #include "tsAsyncReport.h"
 #include "tsAsyncReportArgs.h"
