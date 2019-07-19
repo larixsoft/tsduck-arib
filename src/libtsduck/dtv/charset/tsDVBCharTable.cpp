@@ -115,7 +115,19 @@ void ts::DVBCharTable::unregister() const
     Charset::unregister(); // invoke superclass
 }
 
+#if defined(TS_ARIB)
+namespace { bool g_arib_mode = false; }
 
+void ts::DVBCharTable::EnableARIBMode()
+{
+    g_arib_mode = true;
+}
+
+bool ts::DVBCharTable::IsARIBMode()
+{
+    return g_arib_mode;
+}
+#endif
 //----------------------------------------------------------------------------
 // Get the character coding table at the beginning of a DVB string.
 //----------------------------------------------------------------------------
@@ -123,7 +135,7 @@ void ts::DVBCharTable::unregister() const
 bool ts::DVBCharTable::DecodeTableCode(uint32_t& code, size_t& codeSize, const uint8_t* dvb, size_t dvbSize)
 {
 #if defined(TS_ARIB)
-    if (::getenv("TSDUCK_ENFORCE_ARIB_STD_B24") != nullptr) {
+    if (IsARIBMode()) {
         code = 0x081B24;
         codeSize = 0;
         return true;
