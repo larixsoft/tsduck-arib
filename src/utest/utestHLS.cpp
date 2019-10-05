@@ -35,6 +35,8 @@
 #include "tsunit.h"
 
 
+#if !defined(TS_NO_CURL)
+
 //----------------------------------------------------------------------------
 // The test fixture
 //----------------------------------------------------------------------------
@@ -333,3 +335,5 @@ void HLSTest::testBuildMediaPlaylist()
 
     TSUNIT_EQUAL(refContent2, pl.textContent());
 }
+
+#endif
